@@ -686,20 +686,6 @@ $GLOBALS['TL_DCA']['tl_inventar'] = array
 			),
 			'sql'                     => "char(1) NOT NULL default ''"
 		),
-		'singleSRC' => array
-		(
-			'label'                   => &$GLOBALS['TL_LANG']['tl_inventar']['singleSRC'],
-			'exclude'                 => true,
-			'inputType'               => 'fileTree',
-			'eval'                    => array
-			(
-				'filesOnly'           => true,
-				'extensions'          => \Config::get('validImageTypes'),
-				'fieldType'           => 'radio',
-				'mandatory'           => false
-			),
-			'sql'                     => "binary(16) NULL"
-		),
 		'text' => array
 		(
 			'label'                   => &$GLOBALS['TL_LANG']['tl_inventar']['text'],
