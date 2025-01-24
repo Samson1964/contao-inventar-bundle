@@ -694,7 +694,7 @@ $GLOBALS['TL_DCA']['tl_inventar'] = array
 			'eval'                    => array
 			(
 				'filesOnly'           => true,
-				'extensions'          => Config::get('validImageTypes'),
+				'extensions'          => \Config::get('validImageTypes'),
 				'fieldType'           => 'radio',
 				'mandatory'           => false
 			),
