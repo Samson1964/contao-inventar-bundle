@@ -654,10 +654,3 @@ $GLOBALS['TL_DCA']['tl_inventar'] = array
 		),
 	)
 );
-
-/**
- * Class tl_inventar
- */
-class tl_inventar extends \Backend
-{
-}

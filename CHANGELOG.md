@@ -1,5 +1,9 @@
 # Inventar Changelog
 
+## Version 0.0.5 (2025-01-24)
+
+* Fix: Attempted to load class "Backend" from the global namespace.
+
 ## Version 0.0.4 (2025-01-24)
 
 * Fix: Undefined constant "VERSION" 
