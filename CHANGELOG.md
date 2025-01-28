@@ -1,5 +1,9 @@
 # Inventar Changelog
 
+## Version 0.1.0 (2025-01-28)
+
+* Change: Ausbau der Erweiterung
+
 ## Version 0.0.5 (2025-01-24)
 
 * Fix: Attempted to load class "Backend" from the global namespace.
