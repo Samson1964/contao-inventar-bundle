@@ -32,9 +32,10 @@ $GLOBALS['TL_DCA']['tl_inventar'] = array
 		),
 		'label' => array
 		(
-			'fields'                  => array('title', 'room'),
+			'fields'                  => array('inventarnummer', 'title', 'room', 'remarks'),
 			'showColumns'             => true,
-			'format'                  => '%s',
+			'format'                  => '%s %s %s %s',
+			'label_callback'          => array('tl_inventar', 'modifyInventarnummer')
 		),
 		'global_operations' => array
 		(
@@ -94,7 +95,7 @@ $GLOBALS['TL_DCA']['tl_inventar'] = array
 	// Paletten
 	'palettes' => array
 	(
-		'default'                     => '{title_legend},title;{category_legend},room,group,costCenter,category,condition;{publish_legend},published'
+		'default'                     => '{inventar_legend},inventarnummer;{title_legend},title,number;{category_legend},room,group,costCenter,category,condition;{acquisition_legend:hide},purchaseValue,documentDate;{images_legend},multiSRC;{detail_legend:hide},usefulLifeYears,remarks;{publish_legend},published'
 	),
 
 	// Felder
@@ -108,6 +109,11 @@ $GLOBALS['TL_DCA']['tl_inventar'] = array
 		(
 			'label'                   => &$GLOBALS['TL_LANG']['tl_inventar']['tstamp'],
 			'sql'                     => "int(10) unsigned NOT NULL default '0'"
+		),
+		'inventarnummer' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_inventar']['inventarnummer'],
+			'input_field_callback'    => array('tl_inventar', 'getInventarnummer'),
 		),
 		'title' => array
 		(
@@ -186,6 +192,94 @@ $GLOBALS['TL_DCA']['tl_inventar'] = array
 			),
 			'sql'                     => "int(10) unsigned NOT NULL default '0'"
 		),
+		'number' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_inventar']['number'],
+			'inputType'               => 'text',
+			'default'                 => '1',
+			'eval'                    => array
+			(
+				'rgxp'                => 'natural',
+				'maxlength'           => 5,
+				'tl_class'            => 'w50'
+			),
+			'sql'                     => "smallint(5) unsigned NOT NULL default 1"
+		),
+		'purchaseValue' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_inventar']['purchaseValue'],
+			'inputType'               => 'text',
+			'default'                 => '0',
+			'eval'                    => array
+			(
+				'mandatory'           => false, 
+				'rgxp'                => 'digit', 
+				'maxlength'           => 255, 
+				'tl_class'            => 'w50'
+			),
+			'sql'                     => "float NOT NULL default '0'"
+		),
+		'documentDate' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_inventar']['documentDate'],
+			'default'                 => time(),
+			'filter'                  => true,
+			'sorting'                 => true,
+			'inputType'               => 'text',
+			'eval'                    => array
+			(
+				'rgxp'                => 'date', 
+				'mandatory'           => false, 
+				'doNotCopy'           => false, 
+				'datepicker'          => true, 
+				'tl_class'            =>'w50 wizard'
+			),
+			'load_callback' => array
+			(
+				array('tl_inventar', 'loadDate')
+			),
+			'sql'                     => "int(10) unsigned NOT NULL default 0"
+		),
+		'usefulLifeYears' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_inventar']['usefulLifeYears'],
+			'inputType'               => 'text',
+			'default'                 => '0',
+			'eval'                    => array
+			(
+				'rgxp'                => 'natural',
+				'maxlength'           => 3,
+				'tl_class'            => 'w50'
+			),
+			'sql'                     => "smallint(3) unsigned NOT NULL default 0"
+		),
+		'remarks' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_inventar']['remarks'],
+			'search'                  => true,
+			'inputType'               => 'textarea',
+			'eval'                    => array
+			(
+				'style'               => 'height:400px', 
+				'decodeEntities'      => true, 
+				'tl_class'            => 'clr'
+			),
+			'sql'                     => "text NULL"
+		),
+		'multiSRC' => array
+		(
+			'inputType'               => 'fileTree',
+			'eval'                    => array
+			(
+				'multiple'            => true, 
+				'isGallery'           => true,
+				'extensions'          => '%contao.image.valid_extensions%',
+				'fieldType'           => 'checkbox', 
+				'isSortable'          => true, 
+				'files'               => true
+			),
+			'sql'                     => "blob NULL",
+		),
 		'published' => array
 		(
 			'label'                   => &$GLOBALS['TL_LANG']['tl_inventar']['published'],
@@ -198,3 +292,46 @@ $GLOBALS['TL_DCA']['tl_inventar'] = array
 		),
 	)
 );
+
+class tl_inventar extends Contao\Backend
+{
+	public function getInventarnummer(Contao\DataContainer $dc)
+	{
+		$inventarnummer = self::Inventarnummer($dc->id);
+		$text =
+		'<div class="long widget">
+		<div class="tl_text" style="border:0;"><span>'.$GLOBALS['TL_LANG']['tl_inventar']['inventarnummer'][0].': <b style="font-size:16px;">'.$inventarnummer.'</b></span></div>
+		</div>';
+
+		return $text;
+	}
+
+	public function Inventarnummer($id)
+	{
+		// Inventarnummer aus ID des Datensatzes bilden
+		$inventarnummer = sprintf('%07d', $id);
+		// Inventarnummer mit Punkten trennen
+		$inventarnummer = substr($inventarnummer, 0, 1).'.'.substr($inventarnummer, -6, 3).'.'.substr($inventarnummer, -3);
+		return $inventarnummer;
+	}
+
+	public function modifyInventarnummer($row, $label, Contao\DataContainer $dc, $args)
+	{
+		$args[0] = self::Inventarnummer($row['id']);
+		return $args;
+	}
+
+	/**
+	 * Set the timestamp to 00:00:00 (see #26)
+	 *
+	 * @param integer $value
+	 *
+	 * @return integer
+	 */
+	public function loadDate($value)
+	{
+		if($value == 0) return '';
+		return strtotime(date('d.m.Y', $value) . ' 00:00:00');
+	}
+
+}

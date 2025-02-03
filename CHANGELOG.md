@@ -1,5 +1,10 @@
 # Inventar Changelog
 
+## Version 0.1.1 (2025-02-03)
+
+* Add: tl_inventar.inventarnummer -> Ausgabe der Inventarnummer auf Grundlage der Datensatz-ID
+* Add: tl_inventar -> weitere Eingabefelder analog einer DSB-Inventarliste von 2011
+
 ## Version 0.1.0 (2025-01-28)
 
 * Change: Ausbau der Erweiterung
