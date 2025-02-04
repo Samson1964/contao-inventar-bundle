@@ -1,5 +1,18 @@
 # Inventar Changelog
 
+## Version 0.2.0 (2025-02-04)
+
+* Change: Inventarnummer sechsstellig ohne Punkte statt siebenstellig mit Punkten
+* Change: tl_inventar.documentDate mit leerem als Standard statt aktuellen Datum
+* Change: tl_inventar.usefulLifeYears (Nutzungsdauer) -> Standard auf leer statt 0
+* Add: tl_inventar_hersteller und tl_inventar_mitarbeiter
+* Add: Filter für alle Kategorien
+* Add: Anschaffungspreis in Inventarauflistung
+* Add: Kaufdatum Flag setzen, damit Filter funktioniert + Datum in Inventarliste anzeigen
+* Change: Feld Anschaffungswert benutzerfreundlich formatieren: Standard = leer, wenn gefüllt mit zwei Nachkommastellen
+* Change: Bereich Standort und Kategorien mit w50 statt long formatiert, da zuviel Platzverschwendung
+* Add: Felder für Anlagennummer, Seriennummer, Gerätenummer, Baujahr
+
 ## Version 0.1.1 (2025-02-03)
 
 * Add: tl_inventar.inventarnummer -> Ausgabe der Inventarnummer auf Grundlage der Datensatz-ID

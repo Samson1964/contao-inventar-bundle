@@ -1,11 +1,16 @@
 <?php
-const CONTAO_INVENTAR_BUNDLE_VERSION = '0.1.0';
+const CONTAO_INVENTAR_BUNDLE_VERSION = '0.2.0';
 
 Contao\ArrayUtil::arrayInsert($GLOBALS['BE_MOD'], 0, [
 	'contao-inventar-bundle' => [
 		'inventar' => [
 			'tables' => [
 				'tl_inventar'
+			]
+		],
+		'inventar_mitarbeiter' => [
+			'tables' => [
+				'tl_inventar_mitarbeiter'
 			]
 		],
 		'inventar_orte' => [
@@ -26,6 +31,11 @@ Contao\ArrayUtil::arrayInsert($GLOBALS['BE_MOD'], 0, [
 		'inventar_kategorien' => [
 			'tables' => [
 				'tl_inventar_kategorien'
+			]
+		],
+		'inventar_hersteller' => [
+			'tables' => [
+				'tl_inventar_hersteller'
 			]
 		],
 		'inventar_zustaende' => [
