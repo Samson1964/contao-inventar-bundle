@@ -5,6 +5,7 @@
  */
 $GLOBALS['TL_LANG']['tl_inventar']['inventar_legend'] = 'Inventar';
 $GLOBALS['TL_LANG']['tl_inventar']['inventarnummer'] = array('Inventar-Nr.', 'Inventarnummer');
+$GLOBALS['TL_LANG']['tl_inventar']['inventarnummer_geklebt'] = array('Inventar-Nr. angebracht', 'Die Inventarnummer wurde am Inventar angebracht.');
 
 $GLOBALS['TL_LANG']['tl_inventar']['title_legend'] = 'Titel';
 $GLOBALS['TL_LANG']['tl_inventar']['title'] = array('Artikelbezeichnung', 'Artikelbezeichnung des Inventars');
@@ -20,6 +21,7 @@ $GLOBALS['TL_LANG']['tl_inventar']['manufacturer'] = array('Hersteller', 'Herste
 $GLOBALS['TL_LANG']['tl_inventar']['condition'] = array('Zustand', 'Zustand des Inventars');
 
 $GLOBALS['TL_LANG']['tl_inventar']['acquisition_legend'] = 'Kauf/Anschaffung';
+$GLOBALS['TL_LANG']['tl_inventar']['dealer'] = array('Händler', 'Name des Händlers');
 $GLOBALS['TL_LANG']['tl_inventar']['purchaseValue'] = array('Kaufpreis', 'Kaufpreis bzw. Anschaffungswert in Euro');
 $GLOBALS['TL_LANG']['tl_inventar']['documentDate'] = array('Kaufdatum', 'Kauf- bzw. Belegdatum');
 
@@ -35,6 +37,7 @@ $GLOBALS['TL_LANG']['tl_inventar']['multiSRC'] = array('Quelldateien', 'Bitte w�
 $GLOBALS['TL_LANG']['tl_inventar']['detail_legend'] = 'Artikeldetails';
 $GLOBALS['TL_LANG']['tl_inventar']['usefulLifeYears'] = array('Nutzungsdauer', 'Nutzungsdauer in Jahren');
 $GLOBALS['TL_LANG']['tl_inventar']['remarks'] = array('Bemerkungen', 'Bemerkungen');
+$GLOBALS['TL_LANG']['tl_inventar']['info'] = array('Sonstiges', 'Sonstiges');
 
 $GLOBALS['TL_LANG']['tl_inventar']['publish_legend'] = 'Veröffentlichung';
 $GLOBALS['TL_LANG']['tl_inventar']['published'] = array('Veröffentlichen', 'Datensatz veröffentlichen.');

@@ -1,5 +1,11 @@
 # Inventar Changelog
 
+## Version 0.2.1 (2025-03-10)
+
+* Add: tl_inventar.info -> Feld für Bemerkungen/Informationen
+* Add: tl_inventar.dealer -> Feld für Händler
+* Inventarliste: Kaufbetrag vor Eurozeichen mit geschütztem Leerzeichen, damit kein Umbruch erfolgt
+
 ## Version 0.2.0 (2025-02-04)
 
 * Change: Inventarnummer sechsstellig ohne Punkte statt siebenstellig mit Punkten

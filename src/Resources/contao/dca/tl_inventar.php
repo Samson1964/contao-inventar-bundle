@@ -95,7 +95,7 @@ $GLOBALS['TL_DCA']['tl_inventar'] = array
 	// Paletten
 	'palettes' => array
 	(
-		'default'                     => '{inventar_legend},inventarnummer;{title_legend},title,number;{category_legend},room,employees,group,costCenter,category,manufacturer,condition;{acquisition_legend:hide},purchaseValue,documentDate;{device_legend},plantNumber,serialNumber,deviceNumber,manufactureYear;{images_legend},multiSRC;{detail_legend:hide},usefulLifeYears,remarks;{publish_legend},published'
+		'default'                     => '{inventar_legend},inventarnummer,inventarnummer_geklebt;{title_legend},title,number;{category_legend},room,employees,group,costCenter,category,manufacturer,condition;{acquisition_legend:hide},dealer,purchaseValue,documentDate;{device_legend},plantNumber,serialNumber,deviceNumber,manufactureYear;{images_legend},multiSRC;{detail_legend:hide},usefulLifeYears,remarks,info;{publish_legend},published'
 	),
 
 	// Felder
@@ -114,6 +114,16 @@ $GLOBALS['TL_DCA']['tl_inventar'] = array
 		(
 			'label'                   => &$GLOBALS['TL_LANG']['tl_inventar']['inventarnummer'],
 			'input_field_callback'    => array('tl_inventar', 'getInventarnummer'),
+		),
+		'inventarnummer_geklebt' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_inventar']['inventarnummer_geklebt'],
+			'exclude'                 => true,
+			'filter'                  => true,
+			'default'                 => false,
+			'inputType'               => 'checkbox',
+			'eval'                    => array('mandatory'=>false, 'tl_class'=>'w50'),
+			'sql'                     => "char(1) NOT NULL default ''"
 		),
 		'title' => array
 		(
@@ -237,6 +247,19 @@ $GLOBALS['TL_DCA']['tl_inventar'] = array
 				'tl_class'            => 'w50'
 			),
 			'sql'                     => "smallint(5) unsigned NOT NULL default 1"
+		),
+		'dealer' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_inventar']['dealer'],
+			'inputType'               => 'text',
+			'exclude'                 => true,
+			'eval'                    => array
+			(
+				'mandatory'           => false, 
+				'maxlength'           => 128, 
+				'tl_class'            => 'w50'
+			),
+			'sql'                     => "varchar(128) NOT NULL default ''"
 		),
 		'purchaseValue' => array
 		(
@@ -382,6 +405,19 @@ $GLOBALS['TL_DCA']['tl_inventar'] = array
 			),
 			'sql'                     => "smallint(4) unsigned NOT NULL default 0"
 		),
+		'info' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_inventar']['info'],
+			'search'                  => true,
+			'inputType'               => 'textarea',
+			'eval'                    => array
+			(
+				'style'               => 'height:400px', 
+				'decodeEntities'      => true, 
+				'tl_class'            => 'clr'
+			),
+			'sql'                     => "text NULL"
+		),
 		'published' => array
 		(
 			'label'                   => &$GLOBALS['TL_LANG']['tl_inventar']['published'],
@@ -419,7 +455,7 @@ class tl_inventar extends Contao\Backend
 		// Inventarnummer formatieren
 		$args[0] = self::Inventarnummer($row['id']);
 		// Kaufsumme formatieren
-		if($args[2]) $args[2] = str_replace('.', ',', sprintf('%2.2f', $args[2])).' €';
+		if($args[2]) $args[2] = str_replace('.', ',', sprintf('%2.2f', $args[2])).'&nbsp;€';
 		else $args[2] = '-';
 
 		return $args;
