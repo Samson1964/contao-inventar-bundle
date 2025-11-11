@@ -113,6 +113,7 @@ $GLOBALS['TL_DCA']['tl_inventar'] = array
 		'inventarnummer' => array
 		(
 			'label'                   => &$GLOBALS['TL_LANG']['tl_inventar']['inventarnummer'],
+			'sorting'                 => true,
 			'input_field_callback'    => array('tl_inventar', 'getInventarnummer'),
 		),
 		'inventarnummer_geklebt' => array
@@ -142,6 +143,7 @@ $GLOBALS['TL_DCA']['tl_inventar'] = array
 			'label'                   => &$GLOBALS['TL_LANG']['tl_inventar']['room'],
 			'inputType'               => 'select',
 			'filter'                  => true,
+			'sorting'                 => true,
 			'foreignKey'              => 'tl_inventar_orte.title',
 			'eval'                    => array
 			(

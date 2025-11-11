@@ -1,5 +1,9 @@
 # Inventar Changelog
 
+## Version 0.2.2 (2025-11-11)
+
+* Add: tl_inventar.room und .inventarnummer sortierbar
+
 ## Version 0.2.1 (2025-03-10)
 
 * Add: tl_inventar.info -> Feld für Bemerkungen/Informationen
