@@ -103,6 +103,8 @@ $GLOBALS['TL_DCA']['tl_inventar'] = array
 	(
 		'id' => array
 		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_inventar']['id'],
+			'sorting'                 => true,
 			'sql'                     => "int(10) unsigned NOT NULL auto_increment"
 		),
 		'tstamp' => array
@@ -113,7 +115,6 @@ $GLOBALS['TL_DCA']['tl_inventar'] = array
 		'inventarnummer' => array
 		(
 			'label'                   => &$GLOBALS['TL_LANG']['tl_inventar']['inventarnummer'],
-			'sorting'                 => true,
 			'input_field_callback'    => array('tl_inventar', 'getInventarnummer'),
 		),
 		'inventarnummer_geklebt' => array

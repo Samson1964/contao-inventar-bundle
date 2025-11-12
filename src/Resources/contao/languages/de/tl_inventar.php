@@ -3,6 +3,8 @@
 /**
  * Backend-Modul: Übersetzungen im Eingabeformular
  */
+$GLOBALS['TL_LANG']['tl_inventar']['id'] = array('ID', 'ID (= Inventarnummer)');
+
 $GLOBALS['TL_LANG']['tl_inventar']['inventar_legend'] = 'Inventar';
 $GLOBALS['TL_LANG']['tl_inventar']['inventarnummer'] = array('Inventar-Nr.', 'Inventarnummer');
 $GLOBALS['TL_LANG']['tl_inventar']['inventarnummer_geklebt'] = array('Inventar-Nr. angebracht', 'Die Inventarnummer wurde am Inventar angebracht.');

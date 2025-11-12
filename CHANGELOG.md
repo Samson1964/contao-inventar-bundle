@@ -1,5 +1,9 @@
 # Inventar Changelog
 
+## Version 0.2.3 (2025-11-12)
+
+* Fix: tl_inventar.inventarnummer ist nicht sortierbar -> tl_inventar.id ist die sortierbare Referenz
+
 ## Version 0.2.2 (2025-11-11)
 
 * Add: tl_inventar.room und .inventarnummer sortierbar
