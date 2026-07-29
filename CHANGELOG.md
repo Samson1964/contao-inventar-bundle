@@ -1,5 +1,9 @@
 # Inventar Changelog
 
+## Version 0.2.4 (2026-07-29)
+
+* Fix: Warning: Undefined array key "deleteConfirm" bei contao:migrate -> Lesezugriffe auf $GLOBALS['TL_LANG'] in den DCA-Dateien mit `?? null` bzw. `?? array()` abgesichert, da der DcaLoader die Sprachdateien noch nicht geladen hat
+
 ## Version 0.2.3 (2025-11-12)
 
 * Fix: tl_inventar.inventarnummer ist nicht sortierbar -> tl_inventar.id ist die sortierbare Referenz
