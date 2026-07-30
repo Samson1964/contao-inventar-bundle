@@ -1,7 +1,14 @@
 {
     "name": "schachbulle/contao-inventar-bundle",
     "type": "contao-bundle",
-    "description": "Inventarverwaltung für Contao 5",
+    "description": "Verwaltet ein Inventar mit Standorten, Anschaffungsdaten und Inventarnummern.",
+    "keywords": [
+        "contao",
+        "inventar",
+        "verwaltung",
+        "bestand"
+    ],
+    "homepage": "https://github.com/Samson1964/contao-inventar-bundle",
     "license": "LGPL-3.0-or-later",
     "authors": [
         {
